@@ -10,6 +10,9 @@ export const UsersPage = (props) => {
       <Link to={ROUTES.HOME_PAGE}>
         <button className="return-btn">Get back</button>
       </Link>
+      <button className="sort-btn" onClick={() => props.onSortClick()}>
+        Get sort
+      </button>
       <div>
         {props.users.map((user, index) => (
           <UserCard
@@ -18,7 +21,8 @@ export const UsersPage = (props) => {
             name={user.name}
             age={user.age}
             phone={user.phone}
-            onCardClick={() => props.onCardClick(index)}
+            onCardClick={() => props.onCardClick(user)}
+            isActive={user.isActive}
           />
         ))}
       </div>

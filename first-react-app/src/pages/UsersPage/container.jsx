@@ -8,42 +8,65 @@ export const UsersPageContainer = () => {
       age: 27,
       phone: '+3752993847474',
       avatar: 'http://archilab.online/images/1/123.jpg',
+      isActive: false,
     },
     {
       name: 'Bella',
       age: 23,
       phone: '+3752974756674',
       avatar: 'https://www.blast.hk/attachments/64805/',
+      isActive: false,
     },
     {
       name: 'Vendetta',
       age: 27,
       phone: '+3752993847474',
       avatar: 'http://archilab.online/images/1/123.jpg',
+      isActive: false,
     },
     {
       name: 'John',
       age: 23,
       phone: '+3752974756674',
       avatar: 'https://www.blast.hk/attachments/64805/',
+      isActive: false,
     },
     {
       name: 'Tim',
       age: 27,
       phone: '+3752993847474',
       avatar: 'http://archilab.online/images/1/123.jpg',
+      isActive: false,
     },
     {
       name: 'GRISHA',
       age: 23,
       phone: '+3752974756674',
       avatar: 'https://www.blast.hk/attachments/64805/',
+      isActive: false,
     },
   ]);
-  const handleUserRemove = (index) => {
+  const [isSortMaxMin, setIsSortMaxMin] = useState(false);
+  const handleUserActive = (user) => {
     const stateCopy = [...userList];
-    stateCopy.splice(index, 1);
+    stateCopy.map((item) => {
+      if (item === user) {
+        item.isActive = !item.isActive;
+      }
+    });
     setUserList(stateCopy);
   };
-  return <UsersPage users={userList} onCardClick={handleUserRemove} />;
+  const handleUserSort = () => {
+    const stateCopy = [...userList];
+    stateCopy.sort((a, b) => (isSortMaxMin ? b.age - a.age : a.age - b.age));
+    setUserList(stateCopy);
+    setIsSortMaxMin(!isSortMaxMin);
+  };
+  return (
+    <UsersPage
+      users={userList}
+      onSortClick={handleUserSort}
+      onCardClick={handleUserActive}
+    />
+  );
 };
