@@ -70,3 +70,12 @@ export const UsersPageContainer = () => {
     />
   );
 };
+
+{/* <footerList title ='menu' list={footer Menu} />
+<footerList title='account' list={footer Account} />
+<div>
+  <span>{props.title}</span>
+  <ul>
+    {props.list.map(item=><li>{item}</li>)}
+  </ul>
+</div> */}
